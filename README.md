@@ -52,6 +52,7 @@ NAME                                  POD-SELECTOR         AGE
 allow-backend-tier-to-db-tier         role=db-tier         106m
 allow-frontend-tier-to-backend-tier   role=backend-tier    106m
 allow-loadbalancer-to-frontend        role=frontend-tier   125m
+
 ➜  learn-netpol git:(main) k describe networkpolicy allow-loadbalancer-to-frontend -n testing
 Name:         allow-loadbalancer-to-frontend
 Namespace:    testing
