@@ -56,7 +56,7 @@ allow-loadbalancer-to-frontend        role=frontend-tier   125m
 ➜  learn-netpol git:(main) k describe networkpolicy allow-loadbalancer-to-frontend -n testing
 Name:         allow-loadbalancer-to-frontend
 Namespace:    testing
-Created on:   2024-12-08 09:52:30 +0800 PST
+Created on:   2024-12-08 12:28:40 +0800 PST
 Labels:       <none>
 Annotations:  <none>
 Spec:
@@ -64,7 +64,7 @@ Spec:
   Allowing ingress traffic:
     To Port: 80/TCP
     From:
-      PodSelector: role=loadbalancer
+      NamespaceSelector: name=ingress-nginx
   Not affecting egress traffic
   Policy Types: Ingress
 ➜  learn-netpol git:(main)
