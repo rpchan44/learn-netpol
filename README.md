@@ -46,3 +46,25 @@ kubectl apply -f .
 ```
 
 then hack your way in to shell exec on each pods then use curl to test i'll leave it up to you to do this learn it guys and embrace it you could do it!!
+```
+➜  learn-netpol git:(main) k get networkpolicy -n testing
+NAME                                  POD-SELECTOR         AGE
+allow-backend-tier-to-db-tier         role=db-tier         106m
+allow-frontend-tier-to-backend-tier   role=backend-tier    106m
+allow-loadbalancer-to-frontend        role=frontend-tier   125m
+➜  learn-netpol git:(main) k describe networkpolicy allow-loadbalancer-to-frontend -n testing
+Name:         allow-loadbalancer-to-frontend
+Namespace:    testing
+Created on:   2024-12-08 09:52:30 +0800 PST
+Labels:       <none>
+Annotations:  <none>
+Spec:
+  PodSelector:     role=frontend-tier
+  Allowing ingress traffic:
+    To Port: 80/TCP
+    From:
+      PodSelector: role=loadbalancer
+  Not affecting egress traffic
+  Policy Types: Ingress
+➜  learn-netpol git:(main)
+```
