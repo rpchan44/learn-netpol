@@ -38,3 +38,11 @@ In frontend tier only pods with role loadbalancer can hit its ingress port 80 / 
 In the backend tier only pods with role frontend-tier can hit its ingress port 80 / nginx
 In the db tier only the pods with role backend-tier can hit hit its ingress port 3306 / mysql
 ``` 
+# To try
+
+```
+kubectl create ns testing
+kubectl apply -f .
+```
+
+then hack your way in to shell exec on each pods then use curl to test i'll leave it up to you to do this learn it guys and embrace it you could do it!!
