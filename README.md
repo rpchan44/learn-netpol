@@ -33,6 +33,8 @@ If no policy is defined, the default is to allow all traffic.
 
 # In this demo the geist is basically like this
 
+```
 In frontend tier only pods with role loadbalancer can hit its ingress port 80 / nginx
 In the backend tier only pods with role frontend-tier can hit its ingress port 80 / nginx
-In the db tier only the pods with role backend-tier can hit hit its ingress port 3306 / mysql 
+In the db tier only the pods with role backend-tier can hit hit its ingress port 3306 / mysql
+``` 
