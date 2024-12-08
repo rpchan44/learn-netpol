@@ -9,9 +9,9 @@ spec:
       role: frontend-tier  # This applies the policy to frontend-tier pods
   ingress:
   - from:
-    - podSelector:
+    - namespaceSelector:
         matchLabels:
-          role: loadbalancer  # Only allow traffic from pods with this role
+          name: ingress-nginx  # Only allow traffic from pods from nginx-ingress controller 
     ports:
     - protocol: TCP
       port: 80  # Assuming the frontend listens on port 80
