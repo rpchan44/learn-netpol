@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-loadbalancer-to-frontend
+  namespace: testing 
+spec:
+  podSelector:
+    matchLabels:
+      role: frontend-tier  # This applies the policy to frontend-tier pods
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          role: loadbalancer  # Only allow traffic from pods with this role
+    ports:
+    - protocol: TCP
+      port: 80  # Assuming the frontend listens on port 80
+  policyTypes:
+  - Ingress

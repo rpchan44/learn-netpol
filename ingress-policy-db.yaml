@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-backend-tier-to-db-tier
+  namespace: testing 
+spec:
+  podSelector:
+    matchLabels:
+      role: db-tier  # This applies the policy to backend-tier pods
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          role: backend-tier  # Only allow traffic from pods with this role
+    ports:
+    - protocol: TCP
+      port: 3306  # Assuming mysql is listening on default port 3306
+  policyTypes:
+  - Ingress

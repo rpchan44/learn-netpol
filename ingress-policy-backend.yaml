@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-frontend-tier-to-backend-tier
+  namespace: testing 
+spec:
+  podSelector:
+    matchLabels:
+      role: backend-tier  # This applies the policy to backend-tier pods
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          role: frontend-tier  # Only allow traffic from pods with this role
+    ports:
+    - protocol: TCP
+      port: 80  # Assuming the backend listens on port 80 
+  policyTypes:
+  - Ingress
